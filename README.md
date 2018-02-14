@@ -1,5 +1,9 @@
 # PersistencePerformanceFun
 
+An application used at Learn Swift Winnipeg to compare and contrast different persistence methods, including UserDefaults, manually storing files via FileManager, and using the Disk framework.
+
+## Getting Started
+
 This project uses Carthage dependency manager to load 3rd party frameworks. It must be installed in order to build the project. Follow the provided steps to install via HomeBrew:
 
 ### Ensure HomeBrew Is Installed
