@@ -47,7 +47,6 @@ class MeasuringPerformanceViewController: UIViewController {
         switch storageProviderSegmentedControl.selectedSegmentIndex {
         case 0: storageProvider = UserDefaultsStorageProvider()
         case 1: storageProvider = FileManagerStorageProvider()
-        case 2: storageProvider = DiskFrameworkStorageProvider()
         default: print("Unknown storage provider selected.")
         }
     }

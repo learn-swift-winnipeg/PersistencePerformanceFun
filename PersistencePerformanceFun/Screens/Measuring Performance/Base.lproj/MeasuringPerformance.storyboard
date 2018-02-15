@@ -32,7 +32,6 @@
                                         <segments>
                                             <segment title="UserDefaults"/>
                                             <segment title="FileManager"/>
-                                            <segment title="Disk"/>
                                         </segments>
                                         <connections>
                                             <action selector="storageProviderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OF2-cg-qJv"/>

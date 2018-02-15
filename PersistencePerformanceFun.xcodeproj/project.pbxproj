@@ -12,8 +12,6 @@
 		008AD53520336194007792E5 /* UserDefaultsStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008AD53420336194007792E5 /* UserDefaultsStorageProvider.swift */; };
 		008AD537203361AE007792E5 /* FileManagerStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008AD536203361AE007792E5 /* FileManagerStorageProvider.swift */; };
 		008AD53B20336547007792E5 /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008AD53A20336547007792E5 /* DispatchTime.swift */; };
-		008AD53F2033B956007792E5 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008AD53E2033B956007792E5 /* Disk.framework */; };
-		008AD5412033B9FD007792E5 /* DiskFrameworkStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008AD5402033B9FD007792E5 /* DiskFrameworkStorageProvider.swift */; };
 		00DF4022201142F100AF652B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DF4021201142F100AF652B /* AppDelegate.swift */; };
 		00DF4024201142F100AF652B /* MeasuringPerformanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DF4023201142F100AF652B /* MeasuringPerformanceViewController.swift */; };
 		00DF4027201142F100AF652B /* MeasuringPerformance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DF4025201142F100AF652B /* MeasuringPerformance.storyboard */; };
@@ -27,8 +25,6 @@
 		008AD53420336194007792E5 /* UserDefaultsStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProvider.swift; sourceTree = "<group>"; };
 		008AD536203361AE007792E5 /* FileManagerStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStorageProvider.swift; sourceTree = "<group>"; };
 		008AD53A20336547007792E5 /* DispatchTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTime.swift; sourceTree = "<group>"; };
-		008AD53E2033B956007792E5 /* Disk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Disk.framework; path = Carthage/Build/iOS/Disk.framework; sourceTree = "<group>"; };
-		008AD5402033B9FD007792E5 /* DiskFrameworkStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFrameworkStorageProvider.swift; sourceTree = "<group>"; };
 		00DF401E201142F100AF652B /* PersistencePerformanceFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersistencePerformanceFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DF4021201142F100AF652B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00DF4023201142F100AF652B /* MeasuringPerformanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringPerformanceViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				008AD53F2033B956007792E5 /* Disk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +51,6 @@
 				008AD53220335966007792E5 /* StorageProvider.swift */,
 				008AD53420336194007792E5 /* UserDefaultsStorageProvider.swift */,
 				008AD536203361AE007792E5 /* FileManagerStorageProvider.swift */,
-				008AD5402033B9FD007792E5 /* DiskFrameworkStorageProvider.swift */,
 				008AD530203358EC007792E5 /* Todo.swift */,
 			);
 			path = Providers;
@@ -70,20 +64,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		008AD53D2033B956007792E5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				008AD53E2033B956007792E5 /* Disk.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		00DF4015201142F100AF652B = {
 			isa = PBXGroup;
 			children = (
 				00DF4020201142F100AF652B /* PersistencePerformanceFun */,
 				00DF401F201142F100AF652B /* Products */,
-				008AD53D2033B956007792E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,7 +145,6 @@
 				00DF401A201142F100AF652B /* Sources */,
 				00DF401B201142F100AF652B /* Frameworks */,
 				00DF401C201142F100AF652B /* Resources */,
-				008AD53C2033B906007792E5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -218,24 +202,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		008AD53C2033B906007792E5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		00DF401A201142F100AF652B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -247,7 +213,6 @@
 				008AD531203358EC007792E5 /* Todo.swift in Sources */,
 				00DF4022201142F100AF652B /* AppDelegate.swift in Sources */,
 				008AD53B20336547007792E5 /* DispatchTime.swift in Sources */,
-				008AD5412033B9FD007792E5 /* DiskFrameworkStorageProvider.swift in Sources */,
 				008AD53520336194007792E5 /* UserDefaultsStorageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
