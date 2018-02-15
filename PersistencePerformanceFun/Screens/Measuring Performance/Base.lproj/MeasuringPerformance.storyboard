@@ -19,16 +19,27 @@
         <!--Measuring Performance View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MeasuringPerformanceViewController" customModule="UserDefaultsLimitsFun" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MeasuringPerformanceViewController" customModule="PersistencePerformanceFun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-27-CL0" userLabel="Container">
-                                <rect key="frame" x="16" y="60" width="288" height="216"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-27-CL0" userLabel="Container">
+                                <rect key="frame" x="16" y="40" width="288" height="384"/>
                                 <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iFW-Jy-50Z" userLabel="Storage Provider Segmented Control">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
+                                        <segments>
+                                            <segment title="UserDefaults"/>
+                                            <segment title="FileManager"/>
+                                            <segment title="Disk"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="storageProviderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OF2-cg-qJv"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-oR-tgY" userLabel="Input Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="48" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of records:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-D7-llE" userLabel="Records Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="149" height="30"/>
@@ -48,7 +59,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fff-d0-cuW" userLabel="Storing Container">
-                                        <rect key="frame" x="0.0" y="70" width="288" height="53"/>
+                                        <rect key="frame" x="0.0" y="98" width="288" height="133"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1I-FL-bHD" userLabel="Store Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="33"/>
@@ -59,7 +70,10 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnB-eu-FQy" userLabel="Storing Results Label">
-                                                <rect key="frame" x="0.0" y="33" width="288" height="20"/>
+                                                <rect key="frame" x="0.0" y="33" width="288" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="XQA-LZ-IbF"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -67,7 +81,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BeY-eJ-8cZ" userLabel="Retrieving Container">
-                                        <rect key="frame" x="0.0" y="163" width="288" height="53"/>
+                                        <rect key="frame" x="0.0" y="251" width="288" height="133"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBK-Yc-3Lc" userLabel="Retrieve Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="33"/>
@@ -78,7 +92,10 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wr-iC-g14" userLabel="Retrieving Result Label">
-                                                <rect key="frame" x="0.0" y="33" width="288" height="20"/>
+                                                <rect key="frame" x="0.0" y="33" width="288" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="T4g-gw-lcA"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -91,13 +108,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="chQ-27-CL0" secondAttribute="trailing" id="OGG-ut-8p1"/>
-                            <constraint firstItem="chQ-27-CL0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Qst-ZJ-gNb"/>
+                            <constraint firstItem="chQ-27-CL0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Qst-ZJ-gNb"/>
                             <constraint firstAttribute="leadingMargin" secondItem="chQ-27-CL0" secondAttribute="leading" id="p15-AE-DhY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="retrievingResultsLabel" destination="8Wr-iC-g14" id="JOj-VQ-1SZ"/>
+                        <outlet property="storageProviderSegmentedControl" destination="iFW-Jy-50Z" id="f1P-J3-6Or"/>
                         <outlet property="storeCountTextField" destination="ZOQ-bw-ez7" id="gbp-Ra-JVi"/>
                         <outlet property="storingResultsLabel" destination="bnB-eu-FQy" id="uIE-Ji-hjF"/>
                     </connections>

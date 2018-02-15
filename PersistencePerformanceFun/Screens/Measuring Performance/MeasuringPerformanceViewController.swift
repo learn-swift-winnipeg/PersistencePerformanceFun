@@ -6,6 +6,7 @@ class MeasuringPerformanceViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet var storageProviderSegmentedControl: UISegmentedControl!
     @IBOutlet var storeCountTextField: UITextField!
     @IBOutlet var storingResultsLabel: UILabel!
     
@@ -13,9 +14,7 @@ class MeasuringPerformanceViewController: UIViewController {
     
     // MARK: - Stored Properties
     
-    private let storageProvider: StorageProvider = UserDefaultsStorageProvider()
-//    private let storageProvider: StorageProvider = FileManagerStorageProvider()
-//    private let storageProvider: StorageProvider = DiskFrameworkStorageProvider()
+    private var storageProvider: StorageProvider = UserDefaultsStorageProvider()
     
     private let numberFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -42,6 +41,31 @@ class MeasuringPerformanceViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func storageProviderChanged(_ sender: Any) {
+        clearStorageAndUI()
+        
+        switch storageProviderSegmentedControl.selectedSegmentIndex {
+        case 0: storageProvider = UserDefaultsStorageProvider()
+        case 1: storageProvider = FileManagerStorageProvider()
+        case 2: storageProvider = DiskFrameworkStorageProvider()
+        default: print("Unknown storage provider selected.")
+        }
+    }
+    
+    private func clearStorageAndUI() {
+        do {
+            let emptyTodos: [Todo] = []
+            let emptyTodosData = try JSONEncoder().encode(emptyTodos)
+            try storageProvider.store(data: emptyTodosData, forKey: .todos)
+            let _ = try storageProvider.data(forKey: .todos)
+            
+            storingResultsLabel.text = "Results"
+            retrievingResultsLabel.text = "Results"
+        } catch {
+            print(error)
+        }
+    }
+    
     @IBAction func storeTapped(_ sender: Any) {
         guard let numberOfRecordsToStore = Int(storeCountTextField.text!) else { return }
         guard numberOfRecordsToStore >= 0 else { return }
@@ -49,7 +73,7 @@ class MeasuringPerformanceViewController: UIViewController {
         storeCountTextField.resignFirstResponder()
         
         let todo = Todo(
-            title: "Walk with Dexter in the valley",
+            title: UUID().uuidString,
             dueDate: Date(),
             priority: .high
         )
